@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:title="Авиабилеты"
+        android:id="@id/airlineMainFragment"
+        android:icon="@drawable/ic_airfares_24"
+        />
+    <item
+        android:title="Отели"
+        android:id="@id/mockFragment"
+        android:icon="@drawable/ic_hotels_24"
+        />
+    <item
+        android:title="Короче"
+        android:id="@id/mockFragment"
+        android:icon="@drawable/ic_short_route_24"
+        />
+    <item
+        android:title="Подписки"
+        android:id="@id/mockFragment"
+        android:icon="@drawable/ic_subscriptions_24"
+        />
+    <item
+        android:title="Профиль"
+        android:id="@id/mockFragment"
+        android:icon="@drawable/ic_profile_24"
+        />
+</menu>

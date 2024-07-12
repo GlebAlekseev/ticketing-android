@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/titleTV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.Ticketing.Title1"
+        android:textColor="@color/white"
+        android:layout_marginVertical="20dp"
+        android:layout_marginHorizontal="16dp"
+        android:text="@string/offer_music_trip" />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/offersRV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:listitem="@layout/item_offer"
+        tools:itemCount="4"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:orientation="horizontal"
+        />
+
+
+</LinearLayout>

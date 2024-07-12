@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/card_search"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:backgroundTint="@color/grey_2"
+    android:elevation="4dp"
+    app:cardCornerRadius="16dp">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:backgroundTint="@color/grey_4"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="4dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="8dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingEnd="8dp"
+                android:src="@drawable/ic_search_24"
+                app:tint="@color/black" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="8dp"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/originET"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="8dp"
+                    android:background="@null"
+                    android:hint="@string/search_ticket_origin"
+                    android:singleLine="true"
+                    android:imeOptions="actionNext"
+                    android:textAppearance="@style/TextAppearance.Ticketing.ButtonText1"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/grey_6"
+                    tools:text="Минск" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/grey_5" />
+
+                <TextView
+                    android:id="@+id/destinationTV"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="8dp"
+                    android:text="@string/search_ticket_destination"
+                    android:textAppearance="@style/TextAppearance.Ticketing.ButtonText1"
+                    android:textColor="@color/grey_6"
+                    app:boxStrokeWidth="0dp"
+                    app:boxStrokeWidthFocused="0dp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+</androidx.cardview.widget.CardView>

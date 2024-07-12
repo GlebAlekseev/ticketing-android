@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/airline_navigation"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="ru.alekseevjk.ticketing.feature.airline.impl.presentation.main.MainFragment"
+        android:label="MainFragment"
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/action_mainFragment_to_searchBottomSheetDialogFragment"
+            app:destination="@id/searchBottomSheetDialogFragment" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/allTicketsFragment"
+        android:name="ru.alekseevjk.ticketing.feature.airline.impl.presentation.tickets.AllTicketsFragment"
+        android:label="AllTicketsFragment"
+        tools:layout="@layout/fragment_all_tickets" >
+        <argument
+            android:name="search_for_country_of_departure"
+            app:argType="ru.alekseevjk.ticketing.feature.airline.impl.presentation.search.entity.SearchForCountryOfDeparture" />
+    </fragment>
+    <dialog
+        android:id="@+id/searchBottomSheetDialogFragment"
+        android:name="ru.alekseevjk.ticketing.feature.airline.impl.presentation.searchBottomSheet.SearchBottomSheetDialogFragment"
+        android:label="SearchBottomSheetDialogFragment"
+        tools:layout="@layout/fragment_search">
+        <argument
+            android:name="departure_town"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_searchBottomSheetDialogFragment_to_plugFragment"
+            app:destination="@id/plugFragment" />
+        <action
+            android:id="@+id/action_searchBottomSheetDialogFragment_to_searchForCountryOfDepartureFragment"
+            app:destination="@id/searchForCountryOfDepartureFragment" />
+    </dialog>
+    <fragment
+        android:id="@+id/plugFragment"
+        android:name="ru.alekseevjk.ticketing.feature.airline.impl.presentation.plug.PlugFragment"
+        android:label="PlugFragment"
+        tools:layout="@layout/fragment_plug"/>
+    <fragment
+        android:id="@+id/searchForCountryOfDepartureFragment"
+        android:name="ru.alekseevjk.ticketing.feature.airline.impl.presentation.search.SearchForCountryOfDepartureFragment"
+        android:label="SearchForCountryOfDepartureFragment"
+        tools:layout="@layout/fragment_search_for_country_of_departure">
+        <argument
+            android:name="departure_town"
+            app:argType="string" />
+        <argument
+            android:name="arrival_town"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_searchForCountryOfDepartureFragment_to_allTicketsFragment"
+            app:destination="@id/allTicketsFragment" />
+
+    </fragment>
+
+
+</navigation>

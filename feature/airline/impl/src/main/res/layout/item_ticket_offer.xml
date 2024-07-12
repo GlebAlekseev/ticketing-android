@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="64dp"
+    android:paddingTop="8dp">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/colorCV"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        app:cardBackgroundColor="@color/red"
+        app:cardCornerRadius="9999dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/titleTV"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        tools:text="Уральские"
+        android:singleLine="true"
+        android:ellipsize="end"
+        android:paddingEnd="8dp"
+        android:textAppearance="@style/TextAppearance.Ticketing.Title4"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toStartOf="@+id/priceTV"
+        app:layout_constraintStart_toEndOf="@+id/colorCV"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/timeListTV"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:textAppearance="@style/TextAppearance.Ticketing.Text2"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="@+id/priceTV"
+        app:layout_constraintStart_toStartOf="@+id/titleTV"
+        app:layout_constraintTop_toBottomOf="@+id/titleTV"
+        tools:text="07:00 09:10 10:00 11:00 12:00 13:00" />
+
+    <TextView
+        android:id="@+id/priceTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="2 390 Р"
+        android:textAppearance="@style/TextAppearance.Ticketing.Title4"
+        android:textColor="@color/dark_blue"
+        app:layout_constraintEnd_toStartOf="@+id/arrowIV"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/arrowIV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:paddingEnd="8dp"
+        android:src="@drawable/ic_right_arrow_16"
+        app:layout_constraintBottom_toBottomOf="@+id/priceTV"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/priceTV"
+        app:tint="@color/dark_blue" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/grey_4"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/timeListTV" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

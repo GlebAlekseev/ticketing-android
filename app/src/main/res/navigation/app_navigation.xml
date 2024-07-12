@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/app_navigation"
+    app:startDestination="@id/withMenuFragment">
+
+    <fragment
+        android:id="@+id/withMenuFragment"
+        android:name="ru.alekseevjk.ticketing.presentation.withMenu.WithMenuFragment"
+        android:label="WithMenuFragment"
+        tools:layout="@layout/fragment_with_menu" />
+    <fragment
+        android:id="@+id/filtersFragment"
+        android:name="ru.alekseevjk.ticketing.feature.airline.impl.presentation.filters.FiltersFragment"
+        android:label="FiltersFragment"
+        tools:layout="@layout/fragment_filters" />
+    <action
+        android:id="@+id/action_to_filtersFragment"
+        app:destination="@id/filtersFragment" />
+
+</navigation>

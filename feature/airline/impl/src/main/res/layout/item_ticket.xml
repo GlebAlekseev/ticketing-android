@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:paddingBottom="16dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="@color/grey_1"
+        app:cardCornerRadius="8dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/priceTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:textAppearance="@style/TextAppearance.Ticketing.Title1"
+                android:textColor="@color/white"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="6 990 Р" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:gravity="center|left"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toStartOf="@+id/priceTV"
+                app:layout_constraintTop_toBottomOf="@+id/priceTV">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/colorCV"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    app:cardBackgroundColor="@color/red"
+                    app:cardCornerRadius="9999dp" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/departureTimeTV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="@style/TextAppearance.Ticketing.Title4"
+                        android:textColor="@color/white"
+                        tools:text="17:45" />
+
+                    <TextView
+                        android:id="@+id/departureCodeTV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:textAppearance="@style/TextAppearance.Ticketing.Title4"
+                        android:textColor="@color/grey_6"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="DME" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="10dp"
+                    android:layout_height="1dp"
+                    android:layout_gravity="top"
+                    android:layout_marginTop="9dp"
+                    android:layout_marginHorizontal="4dp"
+                    android:background="@color/grey_6" />
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/arrivalTimeTV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="@style/TextAppearance.Ticketing.Title4"
+                        android:textColor="@color/white"
+                        tools:text="15:35" />
+
+                    <TextView
+                        android:id="@+id/arrivalCodeTV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:textAppearance="@style/TextAppearance.Ticketing.Title4"
+                        android:textColor="@color/grey_6"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="AER" />
+                </LinearLayout>
+
+
+                <TextView
+                    android:id="@+id/descriptionTV"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center|right"
+                    android:layout_gravity="top|right"
+                    android:textAppearance="@style/TextAppearance.Ticketing.Text2"
+                    android:textColor="@color/white"
+                    tools:text="3.5ч в пути / Без пересадок" />
+            </LinearLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/labelCV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/blue"
+        app:cardCornerRadius="50dp">
+
+        <TextView
+            android:id="@+id/labelTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="2dp"
+            android:layout_marginHorizontal="10dp"
+            android:textAppearance="@style/TextAppearance.Ticketing.Title4"
+            android:textColor="@color/white"
+            tools:text="Самый удобный" />
+
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>

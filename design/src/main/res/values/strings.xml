@@ -1,0 +1,60 @@
+<resources>
+    <string name="app_name">Ticketing</string>
+    <string name="empty" />
+
+    <string name="search_ticket_template">Поиск дешевых авиабилетов</string>
+    <string name="search_ticket_origin">Откуда - Минск</string>
+    <string name="search_ticket_destination">Куда - Турция</string>
+
+    <string name="offer_music_trip">Музыкально отлететь</string>
+    <string name="offer_price">от %,d ₽</string>
+
+    <string name="menu_all_destinations">Показать все места</string>
+    <string name="menu_first_time">Ваш первый раз</string>
+    <string name="menu_flights">Авиабилеты</string>
+    <string name="menu_hotels">Отели</string>
+    <string name="menu_subscriptions">Подписки</string>
+    <string name="menu_profile">Профиль</string>
+
+    <string name="plug">Заглушка</string>
+
+    <string name="default_departure_town">Москва</string>
+
+    <string name="complex_route_title">Сложный маршрут</string>
+    <string name="complex_route_anywhere">Куда угодно</string>
+    <string name="complex_route_weekend_trip">Выходные</string>
+    <string name="complex_route_hot_deals">Горячие билеты</string>
+
+    <string name="popular_destination_istanbul">Стамбул</string>
+    <string name="popular_destination_sochi">Сочи</string>
+    <string name="popular_destination_phuket">Пхукет</string>
+
+    <string name="filter_popular_destinations">Популярное направление</string>
+    <string name="filter_direct_flights">Прямые рейсы</string>
+    <string name="filter_show_all">Показать все</string>
+    <string name="filter_view_all_tickets">Посмотреть все билеты</string>
+    <string name="filter_subscribe_to_price">Подписка на цену</string>
+
+    <string name="date_back">обратно</string>
+    <string name="date_example">24 фев, сб</string>
+
+    <string name="passengers_and_class_example">1, эконом</string>
+
+    <string name="filter_apply">Готово</string>
+    <string name="filter_transfers">Пересадки</string>
+    <string name="filter_no_transfers">Без пересадок</string>
+    <string name="filter_with_luggage">Только с багажом</string>
+
+    <string name="sort_most_convenient">Самый удобный</string>
+    <string name="sort_evening_arrival">Прилет вечером</string>
+
+    <string name="price_chart">График цен</string>
+
+    <string name="search_bar_filters">Фильтры</string>
+    <string name="search_bar_filter">Фильтр</string>
+
+    <string name="search_transfers">Пересадки</string>
+    <string name="transfer_no_transfers">Без пересадок</string>
+    <string name="transfer_duration_example">3.5ч в пути</string>
+
+</resources>

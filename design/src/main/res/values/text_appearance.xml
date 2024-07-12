@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="TextAppearance.Ticketing" parent="TextAppearance.AppCompat"/>
+    <style name="TextAppearance.Ticketing.Title1" parent="TextAppearance.Ticketing">
+        <item name="fontFamily">@font/sf_pro_display_semibold</item>
+        <item name="android:textSize">22sp</item>
+    </style>
+
+    <style name="TextAppearance.Ticketing.Title2" parent="TextAppearance.Ticketing">
+        <item name="fontFamily">@font/sf_pro_display_semibold</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="TextAppearance.Ticketing.Title3" parent="TextAppearance.Ticketing">
+        <item name="fontFamily">@font/sf_pro_display_medium</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="TextAppearance.Ticketing.Title4" parent="TextAppearance.Ticketing">
+        <item name="fontFamily">@font/sf_pro_display_regular_italic</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="TextAppearance.Ticketing.Text1" parent="TextAppearance.Ticketing">
+        <item name="fontFamily">@font/sf_pro_display_regular</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="TextAppearance.Ticketing.Text2" parent="TextAppearance.Ticketing">
+        <item name="fontFamily">@font/sf_pro_display_regular</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="TextAppearance.Ticketing.ButtonText1" parent="TextAppearance.Ticketing">
+        <item name="fontFamily">@font/sf_pro_display_semibold</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="TextAppearance.Ticketing.ButtonText1_Italic" parent="TextAppearance.Ticketing">
+        <item name="fontFamily">@font/sf_pro_display_regular_italic</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="TextAppearance.Ticketing.TabText" parent="TextAppearance.Ticketing">
+        <item name="fontFamily">@font/sf_pro_display_regular</item>
+        <item name="android:textSize">10sp</item>
+    </style>
+
+</resources>
