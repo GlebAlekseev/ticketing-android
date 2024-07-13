@@ -1,6 +1,5 @@
 package ru.alekseevjk.ticketing.feature.airline.impl.presentation
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -18,12 +17,8 @@ class AirlineMainFragment(
     @Inject
     lateinit var airlineFragmentFactory: AirlineFragmentFactory.AssistedFactory
 
-    override fun onAttach(context: Context) {
-        DaggerAirlineComponent.factory().create(findDependencies()).inject(this)
-        super.onAttach(context)
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
+        DaggerAirlineComponent.factory().create(findDependencies()).inject(this)
         parentFragmentManager.fragmentFactory = airlineFragmentFactory.create(navigateToFilters)
         super.onCreate(savedInstanceState)
     }

@@ -1,6 +1,8 @@
 package ru.alekseevjk.ticketing.feature.airline.impl.presentation.filters
 
 import androidx.lifecycle.ViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import ru.alekseevjk.ticketing.feature.airline.impl.domain.usecase.GetOnlyWithLuggageUseCase
 import ru.alekseevjk.ticketing.feature.airline.impl.domain.usecase.GetWithoutTransfersUseCase
 import ru.alekseevjk.ticketing.feature.airline.impl.domain.usecase.SetOnlyWithLuggageUseCase
@@ -13,11 +15,23 @@ class FiltersViewModel @Inject constructor(
     private val getOnlyWithLuggageUseCase: GetOnlyWithLuggageUseCase,
     private val setOnlyWithLuggageUseCase: SetOnlyWithLuggageUseCase,
 ) : ViewModel() {
-    var withoutTransfers: Boolean
-        get() = getWithoutTransfersUseCase.invoke()
-        set(value) = setWithoutTransfersUseCase.invoke(value)
+    suspend fun getWithoutTransfers(): Boolean = withContext(Dispatchers.IO){
+        getWithoutTransfersUseCase.invoke()
+    }
 
-    var onlyWithLuggage: Boolean
-        get() = getOnlyWithLuggageUseCase.invoke()
-        set(value) = setOnlyWithLuggageUseCase.invoke(value)
+    suspend fun getOnlyWithLuggage(): Boolean = withContext(Dispatchers.IO){
+        getOnlyWithLuggageUseCase.invoke()
+    }
+
+    suspend fun setWithoutTransfers(value: Boolean) {
+        withContext(Dispatchers.IO) {
+            setWithoutTransfersUseCase.invoke(value)
+        }
+    }
+
+    suspend fun setOnlyWithLuggage(value: Boolean) {
+        withContext(Dispatchers.IO) {
+            setOnlyWithLuggageUseCase.invoke(value)
+        }
+    }
 }

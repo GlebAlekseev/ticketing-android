@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collectLatest
@@ -24,6 +25,7 @@ class SearchForCountryOfDepartureViewModel @AssistedInject constructor(
     @Assisted("departureTown") private val departureTown: String,
     @Assisted("arrivalTown") private val arrivalTown: String,
 ) : ViewModel() {
+
     private val _viewState = MutableStateFlow(
         SearchForCountryOfDeparture(
             departureTown = departureTown,
@@ -32,26 +34,37 @@ class SearchForCountryOfDepartureViewModel @AssistedInject constructor(
     )
     val viewState: StateFlow<SearchForCountryOfDeparture> get() = _viewState
 
-    private val _ticketsOffersState =
-        MutableStateFlow<Resource<List<TicketOffer>>>(Resource.Loading)
+    private val _ticketsOffersState = MutableStateFlow<Resource<List<TicketOffer>>>(Resource.Loading)
     val ticketsOffersState: StateFlow<Resource<List<TicketOffer>>> get() = _ticketsOffersState
 
     init {
-        viewModelScope.launch {
-            getOnlyWithLuggageAsFlowUseCase.invoke().collect {
+        observeLuggageState()
+        observeTransfersState()
+        observeTicketOffers()
+    }
+
+    private fun observeLuggageState() {
+        viewModelScope.launch(Dispatchers.IO) {
+            getOnlyWithLuggageAsFlowUseCase.invoke().collectLatest {
                 _viewState.value = _viewState.value.copy(
                     onlyWithLuggage = it
                 )
             }
         }
-        viewModelScope.launch {
-            getWithoutTransfersAsFlowUseCase.invoke().collect {
+    }
+
+    private fun observeTransfersState() {
+        viewModelScope.launch(Dispatchers.IO) {
+            getWithoutTransfersAsFlowUseCase.invoke().collectLatest {
                 _viewState.value = _viewState.value.copy(
                     withoutTransfers = it
                 )
             }
         }
-        viewModelScope.launch {
+    }
+
+    private fun observeTicketOffers() {
+        viewModelScope.launch(Dispatchers.IO) {
             viewState.collectLatest { config ->
                 _ticketsOffersState.value = Resource.Loading
                 getTicketsOffersUseCase.invoke(
@@ -63,7 +76,7 @@ class SearchForCountryOfDepartureViewModel @AssistedInject constructor(
                     returnDate = config.dateReturnBack,
                     travelClass = config.classType.split(",").last().trim(),
                     withLuggageOnly = config.onlyWithLuggage ?: false,
-                ).collect {
+                ).collectLatest {
                     _ticketsOffersState.value = it
                 }
             }
@@ -71,29 +84,26 @@ class SearchForCountryOfDepartureViewModel @AssistedInject constructor(
     }
 
     fun changeTown() {
-        viewModelScope.launch {
-            val oldState = _viewState.value
-            _viewState.value = oldState.copy(
-                departureTown = oldState.arrivalTown,
-                arrivalTown = oldState.departureTown
+        viewModelScope.launch(Dispatchers.IO) {
+            _viewState.value = _viewState.value.copy(
+                departureTown = _viewState.value.arrivalTown,
+                arrivalTown = _viewState.value.departureTown
             )
         }
     }
 
     fun setDateReturnBack(date: LocalDate) {
-        viewModelScope.launch {
-            val oldState = _viewState.value
-            _viewState.value = oldState.copy(
-                dateReturnBack = date,
+        viewModelScope.launch(Dispatchers.IO) {
+            _viewState.value = _viewState.value.copy(
+                dateReturnBack = date
             )
         }
     }
 
     fun setDateDeparture(date: LocalDate) {
-        viewModelScope.launch {
-            val oldState = _viewState.value
-            _viewState.value = oldState.copy(
-                dateDeparture = date,
+        viewModelScope.launch(Dispatchers.IO) {
+            _viewState.value = _viewState.value.copy(
+                dateDeparture = date
             )
         }
     }

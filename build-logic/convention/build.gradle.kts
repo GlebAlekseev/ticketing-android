@@ -41,9 +41,5 @@ gradlePlugin {
             id = "ticketing.ksp"
             implementationClass = "plugins.KspConventionPlugin"
         }
-        register("KotlinJvmParcelizePlugin") {
-            id = "ticketing.kotlin.parcelize"
-            implementationClass = "plugins.KotlinJvmParcelizePlugin"
-        }
     }
 }

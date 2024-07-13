@@ -15,6 +15,4 @@ class MockFragment : Fragment() {
     ): View? {
         return inflater.inflate(R.layout.fragment_mock, container, false)
     }
-
-
 }

@@ -1,10 +1,9 @@
 plugins {
     id("ticketing.android.application")
     id("ticketing.ksp")
+    id("kotlin-parcelize")
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.kotlin.android)
-    id("ticketing.kotlin.parcelize")
-    id("kotlin-parcelize")
 }
 
 android {
@@ -17,6 +16,7 @@ android {
 dependencies {
     implementation(project(":feature:airline:impl"))
     implementation(project(":core:di"))
+    implementation(project(":core:common"))
     implementation(project(":core:network"))
     implementation(project(":app:api"))
     implementation(project(":design"))

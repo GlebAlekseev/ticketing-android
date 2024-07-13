@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <include
@@ -36,7 +37,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginEnd="8dp"
-                    android:text="Обратно"
+                    tools:text="Обратно"
                     android:textAppearance="@style/TextAppearance.Ticketing.Title4"
                     android:textColor="@color/white"
                     app:checkedIconTint="@color/grey_7"
@@ -54,7 +55,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
-                    android:text="24 фев, сб"
+                    tools:text="24 фев, сб"
                     android:textAppearance="@style/TextAppearance.Ticketing.Title4"
                     android:textColor="@color/white"
                     app:chipBackgroundColor="@color/grey_2"
@@ -68,7 +69,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
-                    android:text="1, эконом"
+                    tools:text="1, эконом"
                     android:textAppearance="@style/TextAppearance.Ticketing.Title4"
                     android:textColor="@color/white"
                     app:chipBackgroundColor="@color/grey_2"
@@ -86,7 +87,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="16dp"
-                    android:text="фильтры"
+                    android:text="@string/filters"
                     android:textAppearance="@style/TextAppearance.Ticketing.Title4"
                     android:textColor="@color/white"
                     app:chipBackgroundColor="@color/grey_2"

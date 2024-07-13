@@ -43,9 +43,6 @@ class OfferSpaceItemDecoration(context: Context, spaceDp: Int) : ItemDecoration(
         if (position != parent.adapter!!.itemCount - 1) {
             outRect.right = space
         } else {
-
-            val parentWidth = parent.width
-            val viewWidth = view.width
             val endSpace = dpToPx(parent.context, endSpaceDp)
             outRect.right = endSpace
         }

@@ -4,6 +4,11 @@ plugins {
 
 android {
     namespace = "ru.alekseevjk.ticketing.core.common"
+    buildFeatures {
+        viewBinding = true
+        resValues = true
+        androidResources = true
+    }
 }
 
 dependencies {

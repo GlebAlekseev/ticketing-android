@@ -18,14 +18,29 @@ class MainActivity : AppCompatActivity() {
     private lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        injectDependencies()
+        setupFragmentFactory()
+        super.onCreate(savedInstanceState)
+        initializeBinding()
+        setupNavController()
+    }
+
+    private fun injectDependencies() {
         applicationContext.appComponent.inject(this)
+    }
+
+    private fun setupFragmentFactory() {
         supportFragmentManager.fragmentFactory = mainFragmentFactory.create {
             navController.navigate(R.id.action_to_filtersFragment)
         }
-        super.onCreate(savedInstanceState)
+    }
+
+    private fun initializeBinding() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+    }
 
+    private fun setupNavController() {
         mNavHostFragment =
             supportFragmentManager.findFragmentById(R.id.fragment_container_view) as NavHostFragment
         navController = mNavHostFragment.navController

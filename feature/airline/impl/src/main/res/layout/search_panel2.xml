@@ -39,7 +39,7 @@
                 android:layout_toEndOf="@id/icon1"
                 android:textAppearance="@style/TextAppearance.Ticketing.ButtonText1"
                 android:textColor="@color/white"
-                android:text="Минск" />
+                tools:text="Минск" />
         </RelativeLayout>
 
         <View
@@ -66,10 +66,12 @@
                 android:id="@+id/destinationET"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:digits="@string/cyrillic_digits"
                 android:layout_toStartOf="@+id/clearIB"
                 android:layout_toEndOf="@id/icon2"
                 android:background="@null"
                 android:hint="@string/search_ticket_destination"
+                android:importantForAutofill="no"
                 android:singleLine="true"
                 android:imeOptions="actionNext"
                 android:textAppearance="@style/TextAppearance.Ticketing.ButtonText1"

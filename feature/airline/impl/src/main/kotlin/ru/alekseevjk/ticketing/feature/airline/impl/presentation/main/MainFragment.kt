@@ -2,13 +2,10 @@ package ru.alekseevjk.ticketing.feature.airline.impl.presentation.main
 
 import android.content.Context
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
@@ -16,48 +13,43 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import kotlinx.coroutines.launch
 import ru.alekseevjk.ticketing.core.common.Resource
+import ru.alekseevjk.ticketing.core.common.base.BaseFragment
 import ru.alekseevjk.ticketing.core.di.findDependencies
 import ru.alekseevjk.ticketing.feature.airline.impl.R
 import ru.alekseevjk.ticketing.feature.airline.impl.databinding.FragmentMainBinding
 import ru.alekseevjk.ticketing.feature.airline.impl.di.DaggerAirlineComponent
-import ru.alekseevjk.ticketing.feature.airline.impl.presentation.main.entity.toPopularDestinationWithImage
+import ru.alekseevjk.ticketing.feature.airline.impl.domain.entity.Offer
+import ru.alekseevjk.ticketing.feature.airline.impl.presentation.main.mapper.toPopularDestinationWithImage
 import ru.alekseevjk.ticketing.feature.airline.impl.presentation.main.rv.adapter.OffersAdapter
 import ru.alekseevjk.ticketing.feature.airline.impl.presentation.main.rv.decoration.OfferSpaceItemDecoration
 import ru.alekseevjk.ticketing.feature.airline.impl.presentation.main.rv.helper.StartSnapHelper
 import ru.alekseevjk.ticketing.feature.airline.impl.presentation.searchBottomSheet.SearchBottomSheetDialogFragment
 import javax.inject.Inject
 
-
-class MainFragment : Fragment() {
+class MainFragment : BaseFragment<FragmentMainBinding>(FragmentMainBinding::inflate) {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
     @Inject
     lateinit var offersAdapter: OffersAdapter
+
     private lateinit var mainViewModel: MainViewModel
-    private var binding: FragmentMainBinding? = null
+
     private val offerSpaceItemDecoration by lazy {
-        OfferSpaceItemDecoration(this.requireContext(), 67)
+        val offset =
+            resources.getDimensionPixelSize(ru.alekseevjk.ticketing.design.R.dimen.offer_space_item_decoration)
+        OfferSpaceItemDecoration(requireContext(), offset)
     }
+
     private val startSnapHelper by lazy {
         StartSnapHelper()
     }
 
     override fun onAttach(context: Context) {
-        DaggerAirlineComponent.factory().create(findDependencies()).inject(this)
         super.onAttach(context)
-        mainViewModel =
-            ViewModelProvider(this, viewModelFactory)[MainViewModel::class.java]
+        injectDependencies()
+        initializeViewModel()
     }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        binding = FragmentMainBinding.inflate(layoutInflater)
-        return binding!!.root
-    }
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -66,55 +58,57 @@ class MainFragment : Fragment() {
         if (savedInstanceState == null) {
             loadLastDepartureTown()
         }
-        observeStates()
+        observeOffers()
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        binding = null
+    private fun injectDependencies() {
+        DaggerAirlineComponent.factory().create(findDependencies()).inject(this)
+    }
+
+    private fun initializeViewModel() {
+        mainViewModel = ViewModelProvider(this, viewModelFactory)[MainViewModel::class.java]
     }
 
     private fun setupRecyclerView() {
-        with(binding!!.offersSection.offersRV) {
-            this.adapter = offersAdapter
-            this.addItemDecoration(offerSpaceItemDecoration)
+        binding?.offersSection?.offersRV?.apply {
+            adapter = offersAdapter
+            addItemDecoration(offerSpaceItemDecoration)
             startSnapHelper.attachToRecyclerView(this)
         }
     }
 
     private fun initListeners() {
-        binding!!.searchPanel.destinationTV.setOnClickListener {
-            findNavController().navigate(
-                resId = R.id.action_mainFragment_to_searchBottomSheetDialogFragment,
-                args = Bundle().apply {
-                    this.putString(
-                        SearchBottomSheetDialogFragment.DEPARTURE_TOWN_ARGUMENT,
-                        binding!!.searchPanel.originET.text.toString()
-                    )
-                }
-            )
-        }
-        binding!!.searchPanel.originET.addTextChangedListener {
-            mainViewModel.setLastDepartureTown(it.toString())
-        }
-        with(binding!!.searchPanel.originET) {
-            this.setOnEditorActionListener { v, actionId, event ->
-                if (actionId == EditorInfo.IME_ACTION_NEXT) {
-                    val inputText = this.text.toString()
-                    findNavController().navigate(
-                        resId = R.id.action_mainFragment_to_searchBottomSheetDialogFragment,
-                        args = Bundle().apply {
-                            this.putString(
-                                SearchBottomSheetDialogFragment.DEPARTURE_TOWN_ARGUMENT,
-                                inputText
-                            )
-                        }
-                    )
-                    true
-                } else {
-                    false
+        binding?.searchPanel?.apply {
+            destinationTV.setOnClickListener {
+                navigateToSearchFragment()
+            }
+            originET.addTextChangedListener {
+                lifecycleScope.launch {
+                    mainViewModel.setLastDepartureTown(it.toString())
                 }
             }
+            originET.setOnEditorActionListener { _, actionId, _ ->
+                handleEditorAction(actionId)
+            }
+        }
+    }
+
+    private fun navigateToSearchFragment() {
+        val departureTown = binding?.searchPanel?.originET?.text.toString()
+        findNavController().navigate(
+            R.id.action_mainFragment_to_searchBottomSheetDialogFragment,
+            Bundle().apply {
+                putString(SearchBottomSheetDialogFragment.DEPARTURE_TOWN_ARGUMENT, departureTown)
+            }
+        )
+    }
+
+    private fun handleEditorAction(actionId: Int): Boolean {
+        return if (actionId == EditorInfo.IME_ACTION_NEXT) {
+            navigateToSearchFragment()
+            true
+        } else {
+            false
         }
     }
 
@@ -122,35 +116,43 @@ class MainFragment : Fragment() {
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 val initValue = mainViewModel.getLastDepartureTownUseCase()
-                with(binding!!.searchPanel.originET) {
-                    if (this.text.isEmpty()) {
-                        this.setText(initValue)
+                binding?.searchPanel?.originET?.apply {
+                    if (text.isEmpty()) {
+                        setText(initValue)
                     }
                 }
             }
         }
     }
 
-    private fun observeStates() {
+    private fun observeOffers() {
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
-                mainViewModel.offers.collect {
-                    when (val result = it) {
-                        is Resource.Failure -> {
-                            Toast.makeText(
-                                this@MainFragment.requireContext(),
-                                "Ошибка: ${result.resourceException}",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                        }
-
-                        Resource.Idle -> {}
-                        Resource.Loading -> {}
-                        is Resource.Success -> {
-                            offersAdapter.submitList(result.data.map { it.toPopularDestinationWithImage() })
-                        }
-                    }
+                mainViewModel.offers.collect { result ->
+                    handleOffersResult(result)
                 }
+            }
+        }
+    }
+
+    private fun handleOffersResult(result: Resource<List<Offer>>) {
+        when (result) {
+            is Resource.Failure -> {
+                Toast.makeText(
+                    requireContext(),
+                    "Ошибка: ${result.resourceException}",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+
+            Resource.Idle -> {
+            }
+
+            Resource.Loading -> {
+            }
+
+            is Resource.Success -> {
+                offersAdapter.submitList(result.data.map { it.toPopularDestinationWithImage() })
             }
         }
     }

@@ -2,6 +2,12 @@
     <string name="app_name">Ticketing</string>
     <string name="empty" />
 
+    <string name="main_menu_airline_tickets">Авиабилеты</string>
+    <string name="main_menu_hotels">Отели</string>
+    <string name="main_menu_short_route">Короче</string>
+    <string name="main_menu_subscriptions">Подписки</string>
+    <string name="main_menu_profile">Профиль</string>
+
     <string name="search_ticket_template">Поиск дешевых авиабилетов</string>
     <string name="search_ticket_origin">Откуда - Минск</string>
     <string name="search_ticket_destination">Куда - Турция</string>
@@ -55,6 +61,18 @@
 
     <string name="search_transfers">Пересадки</string>
     <string name="transfer_no_transfers">Без пересадок</string>
-    <string name="transfer_duration_example">3.5ч в пути</string>
+    <string name="transfer_duration_example">3.5ч в пути </string>
 
+    <string name="date_format">dd MMMM</string>
+    <string name="departure_date_and_passenger_count">%1$s, %2$d пассажир</string>
+    <string name="unknown_error">Unknown error occurred</string>
+
+    <string name="no_transfers"> / Без пересадок</string>
+
+    <string name="ticket_description">%sч в пути%s</string>
+
+    <string name="date_format_2">dd MMM, E</string>
+    <string name="return_date_chip_placeholder">Обратно</string>
+    <string name="filters">фильтры</string>
+    <string name="cyrillic_digits">абвгдежзийклмнопрстуфхцчшщъыьэюяАБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ</string>
 </resources>

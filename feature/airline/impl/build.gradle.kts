@@ -1,6 +1,5 @@
 plugins {
     id("ticketing.feature.impl")
-    id("ticketing.kotlin.parcelize")
     id("kotlin-parcelize")
 }
 
