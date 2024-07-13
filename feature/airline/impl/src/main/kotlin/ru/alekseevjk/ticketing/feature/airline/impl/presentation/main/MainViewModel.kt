@@ -15,7 +15,7 @@ class MainViewModel @Inject constructor(
     private val setLastDepartureTownUseCase: SetLastDepartureTownUseCase
 ) : ViewModel() {
     val offers by lazy {
-        getOffersUseCase.invoke().shareIn(scope = viewModelScope, started = SharingStarted.Lazily)
+        getOffersUseCase.invoke().shareIn(scope = viewModelScope, started = SharingStarted.Lazily, replay = 1)
     }
 
     fun getLastDepartureTownUseCase() = getLastDepartureTownUseCase.invoke()

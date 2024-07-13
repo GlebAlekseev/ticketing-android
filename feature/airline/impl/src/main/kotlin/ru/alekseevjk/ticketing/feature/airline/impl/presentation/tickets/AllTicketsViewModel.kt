@@ -29,7 +29,7 @@ class AllTicketsViewModel @AssistedInject constructor(
             returnDate = config.dateReturnBack,
             travelClass = config.classType.split(",").last().trim(),
             withLuggageOnly = config.onlyWithLuggage ?: false,
-        ).shareIn(scope = viewModelScope, started = SharingStarted.Lazily)
+        ).shareIn(scope = viewModelScope, started = SharingStarted.Lazily, replay = 1)
     }
 
     @dagger.assisted.AssistedFactory

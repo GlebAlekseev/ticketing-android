@@ -1,196 +1,202 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/bottom_sheet"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@drawable/bottom_sheet_background"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginVertical="16dp"
-        android:src="@drawable/ic_bottom_sheet_dash" />
-
-
-    <include
-        android:id="@+id/searchPanel2"
-        layout="@layout/search_panel2"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/bottom_sheet"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="8dp" />
+        android:background="@drawable/bottom_sheet_background"
+        android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="24dp"
-        android:gravity="center|top"
-        android:orientation="horizontal"
-        android:weightSum="4">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginVertical="16dp"
+            android:src="@drawable/ic_bottom_sheet_dash" />
+
+
+        <include
+            android:id="@+id/searchPanel2"
+            layout="@layout/search_panel2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="8dp" />
 
         <LinearLayout
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="24dp"
+            android:gravity="center|top"
+            android:orientation="horizontal"
+            android:weightSum="4">
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:backgroundTint="@color/green"
-                app:cardCornerRadius="8dp">
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
 
-                <ImageView
-                    android:id="@+id/routeIV"
+                <androidx.cardview.widget.CardView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:backgroundTint="@color/green"
+                    app:cardCornerRadius="8dp">
+
+                    <ImageView
+                        android:id="@+id/routeIV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_route_24"
+                        app:tint="@color/white" />
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:id="@+id/routeTV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:src="@drawable/ic_route_24"
-                    app:tint="@color/white" />
-            </androidx.cardview.widget.CardView>
+                    android:layout_marginTop="8dp"
+                    android:gravity="center"
+                    android:text="@string/complex_route_title"
+                    android:textAppearance="@style/TextAppearance.Ticketing.Text2"
+                    android:textColor="@color/white" />
+            </LinearLayout>
 
-            <TextView
-                android:id="@+id/routeTV"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_weight="1"
                 android:gravity="center"
-                android:text="@string/complex_route_title"
-                android:textAppearance="@style/TextAppearance.Ticketing.Text2"
-                android:textColor="@color/white" />
-        </LinearLayout>
+                android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
+                <androidx.cardview.widget.CardView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:backgroundTint="@color/blue"
+                    app:cardCornerRadius="8dp">
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:backgroundTint="@color/blue"
-                app:cardCornerRadius="8dp">
+                    <ImageView
+                        android:id="@+id/globeIV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_globe_24"
+                        app:tint="@color/white" />
+                </androidx.cardview.widget.CardView>
 
-                <ImageView
-                    android:id="@+id/globeIV"
+                <TextView
+                    android:id="@+id/globeTV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:src="@drawable/ic_globe_24"
-                    app:tint="@color/white" />
-            </androidx.cardview.widget.CardView>
+                    android:layout_marginTop="8dp"
+                    android:gravity="center"
+                    android:text="@string/complex_route_anywhere"
+                    android:textAppearance="@style/TextAppearance.Ticketing.Text2"
+                    android:textColor="@color/white" />
+            </LinearLayout>
 
-            <TextView
-                android:id="@+id/globeTV"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_weight="1"
                 android:gravity="center"
-                android:text="@string/complex_route_anywhere"
-                android:textAppearance="@style/TextAppearance.Ticketing.Text2"
-                android:textColor="@color/white" />
-        </LinearLayout>
+                android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
+                <androidx.cardview.widget.CardView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:backgroundTint="@color/dark_blue"
+                    app:cardCornerRadius="8dp">
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:backgroundTint="@color/dark_blue"
-                app:cardCornerRadius="8dp">
+                    <ImageView
+                        android:id="@+id/calendarIV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_calendar_24"
+                        app:tint="@color/white" />
+                </androidx.cardview.widget.CardView>
 
-                <ImageView
-                    android:id="@+id/calendarIV"
+                <TextView
+                    android:id="@+id/calendarTV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:src="@drawable/ic_calendar_24"
-                    app:tint="@color/white" />
-            </androidx.cardview.widget.CardView>
+                    android:layout_marginTop="8dp"
+                    android:gravity="center"
+                    android:text="@string/complex_route_weekend_trip"
+                    android:textAppearance="@style/TextAppearance.Ticketing.Text2"
+                    android:textColor="@color/white" />
+            </LinearLayout>
 
-            <TextView
-                android:id="@+id/calendarTV"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_weight="1"
                 android:gravity="center"
-                android:text="@string/complex_route_weekend_trip"
-                android:textAppearance="@style/TextAppearance.Ticketing.Text2"
-                android:textColor="@color/white" />
-        </LinearLayout>
+                android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
+                <androidx.cardview.widget.CardView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:backgroundTint="@color/red"
+                    app:cardCornerRadius="8dp">
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:backgroundTint="@color/red"
-                app:cardCornerRadius="8dp">
+                    <ImageView
+                        android:id="@+id/fireIV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_fire_24"
+                        app:tint="@color/white" />
+                </androidx.cardview.widget.CardView>
 
-                <ImageView
-                    android:id="@+id/fireIV"
+                <TextView
+                    android:id="@+id/fireTV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:src="@drawable/ic_fire_24"
-                    app:tint="@color/white" />
-            </androidx.cardview.widget.CardView>
-
-            <TextView
-                android:id="@+id/fireTV"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:gravity="center"
-                android:text="@string/complex_route_hot_deals"
-                android:textAppearance="@style/TextAppearance.Ticketing.Text2"
-                android:textColor="@color/white" />
+                    android:layout_marginTop="8dp"
+                    android:gravity="center"
+                    android:text="@string/complex_route_hot_deals"
+                    android:textAppearance="@style/TextAppearance.Ticketing.Text2"
+                    android:textColor="@color/white" />
+            </LinearLayout>
         </LinearLayout>
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="30dp"
+            android:backgroundTint="@color/grey_3"
+            app:cardCornerRadius="16dp">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/popularDestinationRV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="140dp"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginVertical="12dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:itemCount="3"
+                tools:listitem="@layout/item_popular_destination" />
+
+        </androidx.cardview.widget.CardView>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="200dp" />
+
     </LinearLayout>
 
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="30dp"
-        android:backgroundTint="@color/grey_3"
-        app:cardCornerRadius="16dp">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/popularDestinationRV"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="12dp"
-            android:layout_marginHorizontal="16dp"
-            tools:itemCount="3"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/item_popular_destination" />
-
-    </androidx.cardview.widget.CardView>
-
-    <View
-        android:layout_height="200dp"
-        android:layout_width="match_parent"/>
-
-</LinearLayout>
-
-
+</ScrollView>

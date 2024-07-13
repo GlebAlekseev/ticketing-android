@@ -20,6 +20,7 @@ import ru.alekseevjk.ticketing.core.di.findDependencies
 import ru.alekseevjk.ticketing.feature.airline.impl.R
 import ru.alekseevjk.ticketing.feature.airline.impl.databinding.FragmentMainBinding
 import ru.alekseevjk.ticketing.feature.airline.impl.di.DaggerAirlineComponent
+import ru.alekseevjk.ticketing.feature.airline.impl.presentation.main.entity.toPopularDestinationWithImage
 import ru.alekseevjk.ticketing.feature.airline.impl.presentation.main.rv.adapter.OffersAdapter
 import ru.alekseevjk.ticketing.feature.airline.impl.presentation.main.rv.decoration.OfferSpaceItemDecoration
 import ru.alekseevjk.ticketing.feature.airline.impl.presentation.main.rv.helper.StartSnapHelper
@@ -36,7 +37,7 @@ class MainFragment : Fragment() {
     private lateinit var mainViewModel: MainViewModel
     private var binding: FragmentMainBinding? = null
     private val offerSpaceItemDecoration by lazy {
-        OfferSpaceItemDecoration(this.requireContext(), 167)
+        OfferSpaceItemDecoration(this.requireContext(), 67)
     }
     private val startSnapHelper by lazy {
         StartSnapHelper()
@@ -98,7 +99,7 @@ class MainFragment : Fragment() {
         }
         with(binding!!.searchPanel.originET) {
             this.setOnEditorActionListener { v, actionId, event ->
-                if (actionId ==EditorInfo.IME_ACTION_NEXT) {
+                if (actionId == EditorInfo.IME_ACTION_NEXT) {
                     val inputText = this.text.toString()
                     findNavController().navigate(
                         resId = R.id.action_mainFragment_to_searchBottomSheetDialogFragment,
@@ -146,7 +147,7 @@ class MainFragment : Fragment() {
                         Resource.Idle -> {}
                         Resource.Loading -> {}
                         is Resource.Success -> {
-                            offersAdapter.submitList(result.data)
+                            offersAdapter.submitList(result.data.map { it.toPopularDestinationWithImage() })
                         }
                     }
                 }

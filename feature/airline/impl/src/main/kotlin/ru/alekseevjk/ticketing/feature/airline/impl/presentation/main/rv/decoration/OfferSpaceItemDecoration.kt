@@ -9,11 +9,11 @@ import androidx.recyclerview.widget.RecyclerView.ItemDecoration
 class OfferSpaceItemDecoration(context: Context, spaceDp: Int) : ItemDecoration() {
     private val space: Int
     private val startSpace: Int
-    private val endSpaceDp: Int = 16
+    private val endSpaceDp: Int = 0
 
     init {
         this.space = dpToPx(context, spaceDp)
-        this.startSpace = dpToPx(context, 16)
+        this.startSpace = dpToPx(context, 0)
     }
 
     private fun dpToPx(context: Context, dp: Int): Int {
